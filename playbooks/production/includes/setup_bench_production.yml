@@ -28,7 +28,7 @@
       when: not app.stat.exists
 
     - name: Install frappe app
-      command: bench --site {{ site }} reinstall
+      command: bench --site {{ site }} reinstall --force
       args:
         chdir: '{{ bench_path }}'
 
