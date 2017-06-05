@@ -22,13 +22,13 @@
 
     # In case we are re-running the script, we would like to skip getting ERPNext App
     - name: Get-app frappe app
-      command: bench get-app erpnext https://github.com/frappe/frappe.git --branch {{ branch }}
+      command: bench get-app frappe https://github.com/frappe/frappe.git --branch {{ branch }}
       args:
         chdir: '{{ bench_path }}'
       when: not app.stat.exists
 
     - name: Install frappe app
-      command: bench --site {{ site }} install-app frappe
+      command: bench --site {{ site }} reinstall
       args:
         chdir: '{{ bench_path }}'
 
