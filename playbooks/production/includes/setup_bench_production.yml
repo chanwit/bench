@@ -31,6 +31,11 @@
       command: bench --site {{ site }} install-app frappe
       args:
         chdir: '{{ bench_path }}'
+        
+    - name: Create logs dir
+      file:
+        path: /home/frappe/frappe-bench/logs/
+        state: directory
 
     - name: Change permissions for frappe home folder
       become: yes
