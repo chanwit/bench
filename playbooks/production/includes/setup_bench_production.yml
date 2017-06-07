@@ -62,6 +62,17 @@
       args:
         chdir: '{{ bench_path }}'
 
+    - name: Change permissions for frappe home folder
+      become: yes
+      become_user: root
+      file:
+        dest: '{{ ansible_env.HOME }}'
+        owner: '{{ ansible_user_id }}'
+        group: '{{ ansible_user_id }}'
+        mode: 0755
+        recurse: yes
+        state: directory
+
     - name: Restart the bench
       command: bench restart
       args:
